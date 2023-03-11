@@ -1,4 +1,0 @@
-classter = {
-    "TOKEN": "5915383212:AAEBX7G7J2yd9snHdHkqyXs8ZJGNXRoi9mY",
-    "ADMIN_ID": 724527991
-}

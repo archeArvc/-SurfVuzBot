@@ -5,7 +5,7 @@ from aiogram.utils import executor
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from fsm.city import reg_handlers_start
 from fsm.sql_handler import sql_handlers_registration
-from Utils.config import classter
+from config import classter
 import asyncio
 from modules.TelegramUtils.commands import reg_commands_handler
 from modules.TelegramUtils.text_handler import register_all
