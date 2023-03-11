@@ -81,7 +81,6 @@ async def city_write(message: types.Message, state: FSMContext):
 
 # Выбор количства сдаваемых предметов
 async def count_chosen(call: types.CallbackQuery, callback_data: dict, state: FSMContext):
-    print(type(callback_data), callback_data)
     await call.answer()
     msg = int(callback_data.get("cc"))
 
@@ -128,13 +127,11 @@ async def count_chosen(call: types.CallbackQuery, callback_data: dict, state: FS
 
 # Общий обработчик
 async def group_callback(call: types.CallbackQuery, callback_data: dict, state: FSMContext):
-    print(callback_data, "sss")
     await call.answer()
 
     # Физика
     if callback_data.get('subject') == 'phys':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="Физика")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -196,7 +193,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # Обществознание
     elif callback_data.get('subject') == 'social':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="Обществознание")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -262,7 +258,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # Английский
     elif callback_data.get('subject') == 'eng':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="Английский")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -328,7 +323,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # Информатика
     elif callback_data.get('subject') == 'inf':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="Информатика")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -394,7 +388,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # Биология
     elif callback_data.get('subject') == 'bio':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="Биология")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -460,7 +453,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # История
     elif callback_data.get('subject') == 'history':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="История")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -526,7 +518,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # Информатика
     elif callback_data.get('subject') == 'ximi':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="Химия")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -592,7 +583,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # География
     elif callback_data.get('subject') == 'geo':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="География")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -658,7 +648,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # Немецкий
     elif callback_data.get('subject') == 'nec':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="Немецкий")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -724,7 +713,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # Французский
     elif callback_data.get('subject') == 'franch':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="Французский")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -790,7 +778,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # Литература
     elif callback_data.get('subject') == 'litr':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="Литература")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -856,7 +843,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
     # Испанский
     elif callback_data.get('subject') == 'spain':
         if callback_data.get('action') == '1_1':
-            print("Ok!")
             await state.update_data(s1="Испанский")
             await asy.gather(send_data_first(message=call.message, state=state))
         elif callback_data.get('action') == '2_1':
@@ -920,7 +906,6 @@ async def group_callback(call: types.CallbackQuery, callback_data: dict, state: 
 
 # Send first handler data
 async def send_data_first(message: types.Message, state: FSMContext):
-    print('Send data!!!!!!!')
     dt = await state.get_data()
     mrk = InlineKeyboardMarkup(row_width=2).add(
         InlineKeyboardButton(f"Да", callback_data=sub_one.new(
@@ -934,7 +919,6 @@ async def send_data_first(message: types.Message, state: FSMContext):
 
 # Send second handler data
 async def send_data_second(message: types.Message, state: FSMContext):
-    print('Send data!!!!!!!')
     dt = await state.get_data()
     mrk = InlineKeyboardMarkup(row_width=2).add(
         InlineKeyboardButton(f"Да", callback_data=sub_one.new(

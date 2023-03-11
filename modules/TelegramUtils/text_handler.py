@@ -8,7 +8,7 @@ from keyboards.inline import ok_data, profiles_data
 from modules.data_base import check_data, get_data
 import asyncio as asy
 from fsm.sql_handler import callabel_dop, stater
-from trash.parser import vuzoteka
+from parse.parser import vuzoteka
 from pathlib import Path
 from modules.TelegramUtils.topest import get_vuzes, top_your_city
 
@@ -57,10 +57,8 @@ async def text_s(message: types.Message, state: FSMContext):
         elif message.text == "Поиск по фильтрам":
             await message.answer("*Ждите*", parse_mode=types.ParseMode.MARKDOWN_V2)
             get_dates = await asy.gather(get_data(message.from_user.id))
-            print(get_dates, "sss")
             city = get_dates[0][1]
             subs = get_dates[0][2]
-            print(city, subs.lower())
             result = await asy.gather(vuzoteka(city, subs.lower()))
             for res in result[0]:
                 # photo = InputFile(f"https:{res['logo']}")

@@ -5,7 +5,6 @@ async def check_data(user_id):
     async with aiosqlite.connect("main.db") as db:
         cursor = await db.execute(f"SELECT user_id FROM users")
         users_ids = await cursor.fetchall()
-        print(users_ids)
         for user in users_ids:
             if user[0] == user_id:
                 return "also_have"
@@ -25,7 +24,6 @@ async def insert_data(user_id, city, subjects):
         await db.execute(f"DELETE FROM users WHERE user_id = {user_id}")
         await db.commit()
         datas = (user_id, city, subjects, 1, 1)
-        print(datas)
         await db.execute(f"INSERT INTO users VALUES(?, ?, ?, ?, ?)", datas)
         await db.commit()
         return "ok"
@@ -60,7 +58,6 @@ async def updata_math_profile(user_id, prf):
     async with aiosqlite.connect("main.db") as db:
         await db.execute(f"UPDATE users SET math_profile = {prf} WHERE user_id = {user_id}")
         await db.commit()
-        print(prf)
         return "succes"
 
 
