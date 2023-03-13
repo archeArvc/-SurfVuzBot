@@ -3,8 +3,8 @@ from aiogram.types import InputFile, BotCommand
 from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from fsm.city import reg_handlers_start
 from fsm.sql_handler import sql_handlers_registration
+from fsm.start_updater import reg_hnfl
 from config import classter
 import asyncio
 from modules.TelegramUtils.commands import reg_commands_handler
@@ -27,11 +27,10 @@ async def main():
         types.BotCommand("menu", "Главное меню")
     ])
 
-    # Регистрация хэндлеров
-    reg_handlers_start(dp)
     reg_commands_handler(dp)
     register_all(dp)
     sql_handlers_registration(dp)
+    reg_hnfl(dp)
 
     # Установка команд
     # await set_commands(bot) 

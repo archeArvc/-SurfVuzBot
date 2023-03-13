@@ -1,13 +1,13 @@
 from aiogram import types, Dispatcher
 from aiogram.types import InputFile
 from aiogram.dispatcher import FSMContext
-from fsm.city import cc_inline
 import json
 from keyboards.reply import *
-from keyboards.inline import ok_data, profiles_data
+from keyboards.inline import ok_data, profiles_data, bs, bs_inline
 from modules.data_base import check_data, get_data
 import asyncio as asy
 from fsm.sql_handler import callabel_dop, stater
+from fsm.start_updater import AnotherState
 from parse.parser import vuzoteka
 from pathlib import Path
 from modules.TelegramUtils.topest import get_vuzes, top_your_city
@@ -88,7 +88,8 @@ async def text_s(message: types.Message, state: FSMContext):
         elif message.text == "Специальность":
             await message.answer("<b>Временно недоступно</b>")
         elif message.text == "Предметы":
-            pass
+            await message.answer("Сколько предметов?", reply_markup=count)
+            await state.set_state(AnotherState.count_subjects.state)
         elif message.text == "Топ 10 вузов России":
             res = await asy.gather(get_vuzes())
             await message.answer(res[0], disable_web_page_preview=True)

@@ -28,3 +28,11 @@ profiles = KeyboardButton("Профиль")
 dop_ex = KeyboardButton("Входные экз.")
 speciality = KeyboardButton("Специальность")
 filters_mrk.add(subjects, city).add(speciality, dop_ex).add(profiles, back)
+
+
+# количество предметов
+count = ReplyKeyboardMarkup(resize_keyboard=True)
+one_kb = KeyboardButton("один")
+two_kb = KeyboardButton("два")
+three_kb = KeyboardButton("три")
+count.add(one_kb, two_kb, three_kb)

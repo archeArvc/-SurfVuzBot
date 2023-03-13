@@ -59,6 +59,14 @@ async def updata_math_profile(user_id, prf):
         await db.execute(f"UPDATE users SET math_profile = {prf} WHERE user_id = {user_id}")
         await db.commit()
         return "succes"
+    
+async def update_subjects(user_id, subjects):
+    async with aiosqlite.connect("main.db") as db:
+        try:
+            await db.execute(f"UPDATE users SET subjects = {subjects} WHERE user_id = {user_id}")
+            await db.commit()
+        except:
+            return "error"
 
 
 async def update_subjects():
